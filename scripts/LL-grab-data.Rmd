@@ -23,23 +23,35 @@ library(tidyverse)
 library(neonUtilities)
 library(here)
 ```
-Grabbing data from R 
+specify target data
 ```{r}
 #periphyton data
-periphyton_collection <- "1"
+periphyton_collection <- "DP1.20166.001"
 
 # fish electro fishing 
-fish_count <- ""
+fish_count <- "DP1.20107.001"
 
 #water quality 
-water_quality <- ""
+water_quality <- "DP1.20288.001"
 
 # Two selected focal sites
-my_sites <- c("JERC", "WOOD")
+my_sites <- c("TOOK", "CRAM", "PRLA")
 
 # Start date (as YYYY-MM)
-start_date <- "2019-01"
+start_date <- "2016-03"
 
 # End date (as YYYY-MM)
-end_date <- "2019-12"
+end_date <- "2021-12"
 ```
+
+download data
+```{r}
+# We'll pull the ground beetle data first
+list2env((loadByProduct(dpID = fish_count, 
+                        site = my_sites, 
+                        #include.provisional = FALSE,
+                        startdate = start_date,
+                        enddate = end_date)),
+         .GlobalEnv)
+```
+
