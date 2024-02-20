@@ -54,4 +54,23 @@ list2env((loadByProduct(dpID = fish_count,
                         enddate = end_date)),
          .GlobalEnv)
 ```
+download variables data 
+```{r}
+variables_20107 %>% 
+  write_csv(here("data", "raw", "variables_20107.csv"))
+```
+
+download data for possible water quality measurments (watertemp)(dissolvedOxygen)
+```{r}
+# fsh_perPass
+fsh_perPass %>% 
+  write_csv(here("data", "raw", "fsh_perPass.csv"))
+```
+
+download data about fish: important names (fishWeight) (morphospeciesIDRemarks)
+```{r}
+# fsh_perFish
+fsh_perFish %>% 
+  write_csv(here("data", "raw", "fsh_perFish.csv"))
+```
 
