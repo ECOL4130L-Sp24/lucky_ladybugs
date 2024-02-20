@@ -1,0 +1,298 @@
+table,fieldName,description,dataType,units,downloadPkg,pubFormat,primaryKey,categoricalCodeName
+ais_maintenance,uid,Unique ID within NEON database; an identifier for the record,string,NA,basic,asIs,NA,NA
+ais_maintenance,startDate,The start date-time or interval during which an event occurred,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm'Z'(floor),NA,NA
+ais_maintenance,endDate,The end date-time or interval during which an event occurred,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm'Z'(floor),NA,NA
+ais_maintenance,domainID,Unique identifier of the NEON domain,string,NA,basic,asIs,NA,NA
+ais_maintenance,siteID,NEON site code,string,NA,basic,asIs,NA,NA
+ais_maintenance,namedLocation,Name of the measurement location in the NEON database,string,NA,basic,asIs,NA,NA
+ais_maintenance,maintenanceScheduled,"Indicator of whether maintenance was scheduled, opportunistic, or both",string,NA,basic,asIs,NA,NA
+ais_maintenance,maintenanceInterval,Maintenance time interval,string,NA,basic,asIs,NA,NA
+ais_maintenance,buoyInspected,Indicator of whether the buoy was inspected,string,NA,basic,LOV,NA,NA
+ais_maintenance,buoySondeCleaned,Indicator of whether the buoy sonde was cleaned,string,NA,basic,LOV,NA,NA
+ais_maintenance,buoySondeCalibrated,Indicator of whether the buoy sonde was calibrated,string,NA,basic,LOV,NA,NA
+ais_maintenance,s1StreamInspected,Indicator of whether sensor set one (S1) was inspected,string,NA,basic,LOV,NA,NA
+ais_maintenance,s1StreamSondeCalibrated,Indicator of whether the sonde at sensor set one (S1) was calibrated,string,NA,basic,LOV,NA,NA
+ais_maintenance,s1StreamSondeCleaned,Indicator of whether the sonde at sensor set one (S1) was cleaned,string,NA,basic,LOV,NA,NA
+ais_maintenance,s2StreamInspected,Indicator of whether sensor set two (S2) was inspected,string,NA,basic,LOV,NA,NA
+ais_maintenance,s2StreamSondeCleaned,Indicator of whether the sonde at sensor set two (S2) was cleaned,string,NA,basic,LOV,NA,NA
+ais_maintenance,s2StreamSondeCalibrated,Indicator of whether the sonde at sensor set two (S2) was calibrated,string,NA,basic,LOV,NA,NA
+ais_maintenance,publicationDate,Date of data publication on the NEON data portal,dateTime,NA,appended by stackByTable,NA,N,NA
+ais_maintenance,release,Identifier for data release,string,NA,appended by stackByTable,NA,N,NA
+ais_multisondeCleanCal,uid,Unique ID within NEON database; an identifier for the record,string,NA,expanded,asIs,NA,NA
+ais_multisondeCleanCal,startDate,The start date-time or interval during which an event occurred,dateTime,NA,expanded,yyyy-MM-dd'T'HH:mm'Z'(floor),NA,NA
+ais_multisondeCleanCal,endDate,The end date-time or interval during which an event occurred,dateTime,NA,expanded,yyyy-MM-dd'T'HH:mm'Z'(floor),NA,NA
+ais_multisondeCleanCal,domainID,Unique identifier of the NEON domain,string,NA,expanded,asIs,NA,NA
+ais_multisondeCleanCal,siteID,NEON site code,string,NA,expanded,asIs,NA,NA
+ais_multisondeCleanCal,namedLocation,Name of the measurement location in the NEON database,string,NA,expanded,asIs,NA,NA
+ais_multisondeCleanCal,s1BiofoulingLevel,Level of biofouling on sensor set one (S1),string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2BiofoulingLevel,Level of biofouling on sensor set two (S2),string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1PreCleaningChla,Pre-cleaning chlorophyll a reading at sensor set one (S1),real,microgramsPerLiter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1PostCleaningChla,Post-cleaning chlorophyll a reading at sensor set one (S1),real,microgramsPerLiter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PreCleaningChla,Pre-cleaning chlorophyll a reading at sensor set two (S2),real,microgramsPerLiter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PostCleaningChla,Post-cleaning chlorophyll a reading at sensor set two (S2),real,microgramsPerLiter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1ChlaCalSuccessful,Indicator of whether or not the first chlorophyll a calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2ChlaCalSuccessful,Indicator of whether or not the first chlorophyll a calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1ChlaBucket,Bucket comparison chlorophyll a reading at sensor set one (S1),real,microgramsPerLiter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2ChlaBucket,Bucket comparison chlorophyll a reading at sensor set two (S2),real,microgramsPerLiter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,chlaComparisonSuccessful,Indicator of whether or not the first chlorophyll a sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1ChlaCal2Successful,Indicator of whether or not the second chlorophyll a calibration  at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2ChlaCal2Successful,Indicator of whether or not the second chlorophyll a calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1Bucket2Chla,Second bucket comparison chlorophyll a reading at sensor set one (S1),real,microgramsPerLiter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2Bucket2Chla,Second bucket comparison chlorophyll a reading at sensor set two (S2),real,microgramsPerLiter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,chlaComparison2Successful,Indicator of whether or not the second chlorophyll a sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1PreCleaningDO,Pre-cleaning dissolved oxygen (DO) reading at sensor set one (S1),real,percent,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PreCleaningDO,Pre-cleaning dissolved oygen (DO) reading at sensor set two (S2),real,percent,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1PostCleaningDO,Post-cleaning dissolved oxygen (DO) reading at sensor set one (S1),real,percent,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PostCleaningDO,Post-cleaning dissolved oxygen (DO) reading at sensor set two (S2),real,percent,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1DOCalSuccessful,Indicator of whether or not the first dissolved oxygen calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2DOCalSuccessful,Indicator of whether or not the first dissolved oxygen calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1BucketDO,Bucket comparison dissolved oxygen (DO) reading at sensor set one (S1),real,percent,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2BucketDO,Bucket comparison dissolved oxygen (DO) reading at sensor set two (S2),real,percent,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,DOComparisonSuccessful,Indicator of whether or not the first dissolved oxygen (DO) sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1DOCal2Successful,Indicator of whether or not the second dissolved oxygen calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2DOCal2Successful,Indicator of whether or not the second dissolved oxygen calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1BucketDO2,Second bucket comparison DO reading at sensor set one (S1),real,percent,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2BucketDO2,Second bucket comparison dissolved oxygen (DO) reading at sensor set two (S2),real,percent,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,DOComparison2Successful,Indicator of whether or not the second dissolved oxygen (DO) sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1PreCleaningPH,Pre-cleaning pH reading at sensor set one (S1),real,pH,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PreCleaningPH,Pre-cleaning pH reading at sensor set two (S2),real,pH,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1PostCleaningPH,Post-cleaning pH reading at sensor set one (S1),real,pH,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PostCleaningPH,Post-cleaning pH reading at sensor set two (S2),real,pH,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1PHCalSuccessful,Indicator of whether or not the first pH calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2PHCalSuccessful,Indicator of whether or not the first pH calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1BucketPH,Bucket comparison pH reading at sensor set one (S1),real,pH,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2BucketPH,Bucket comparison pH reading at sensor set two (S2),real,pH,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,pHComparisonSuccessful,Indicator of whether or not the first pH sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1PHCal2Successful,Indicator of whether or not the second pH calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2PHCal2Successful,Indicator of whether or not the second pH calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1BucketPH2,Second bucket comparison pH reading at sensor set one (S1),real,pH,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2BucketPH2,Second bucket comparison pH reading at sensor set two (S2),real,pH,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,pHComparison2Successful,Indicator of whether or not the second pH sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1PreCleaningSpecCond,Pre-cleaning specific conductivity reading at sensor set one (S1),real,microsiemensPerCentimeter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PreCleaningSpecCond,Pre-cleaning specific conductivity reading at sensor set two (S2),real,microsiemensPerCentimeter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1PostCleaningSpecCond,Post-cleaning specific conductivity reading at sensor set one (S1),real,microsiemensPerCentimeter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PostCleaningSpecCond,Post-cleaning specific conductivity reading at sensor set two (S2),real,microsiemensPerCentimeter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1ConductivityCalSuccessful,Indicator of whether or not the first specific conductance calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2ConductivityCalSuccessful,Indicator of whether or not the first specific conductance calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1BucketSpecCond,Bucket comparison specific conductivity reading at sensor set one (S1),real,microsiemensPerCentimeter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2BucketSpecCond,Bucket comparison specific conductivity reading at sensor set two (S2),real,microsiemensPerCentimeter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,conductivityComparisonSuccessful,Indicator of whether or not the first specific conductance sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1ConductivityCal2Successful,Indicator of whether or not the second specific conductance calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2ConductivityCal2Successful,Indicator of whether or not the second specific conductance calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1BucketSpecCond2,Second bucket comparison specific conductivity reading at sensor set one (S1),real,microsiemensPerCentimeter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2BucketSpecCond2,Second bucket comparison specific conductivity reading at sensor set two (S2),real,microsiemensPerCentimeter,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,conductivityComparison2Successful,Indicator of whether or not the second specific conductance sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1PreCleaningTurbidity,Pre-cleaning turbidity reading at sensor set one (S1),real,formazinNephelometricUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PreCleaningTurbidity,Pre-cleaning turbidity reading at sensor set two (S2),real,formazinNephelometricUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1PostCleaningTurbidity,Post-cleaning turbidity reading at sensor set one (S1),real,formazinNephelometricUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PostCleaningTurbidity,Post-cleaning turbidity reading at sensor set two (S2),real,formazinNephelometricUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1TurbidityCalSuccessful,Indicator of whether or not the first turbidity calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2TurbidityCalSuccessful,Indicator of whether or not the first turbidity calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1TurbidityBucket,Bucket comparison turbidity reading at sensor set one (S1),real,formazinNephelometricUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2TurbidityBucket,Bucket comparison turbidity reading at sensor set two (S2),real,formazinNephelometricUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,turbidityComparisonSuccessful,Indicator of whether or not the first turbidity sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1TurbidityCal2Successful,Indicator of whether or not the second turbidity calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2TurbidityCal2Successful,Indicator of whether or not the second turbidity calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1Bucket2Turbidity,Second bucket comparison turbidity reading at sensor set one (S1),real,formazinNephelometricUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2Bucket2Turbidity,Second bucket comparison turbidity reading at sensor set two (S2),real,formazinNephelometricUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,turbidityComparison2Successful,Indicator of whether or not the second turbidity sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1PreCleaningFdom,Pre-cleaning fluorescent dissolved organic matter (fDOM) reading at sensor set one (S1),real,quinineSulfateUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PreCleaningFdom,Pre-cleaning fluorescent dissolved organic matter (fDOM) reading at sensor set two (S2),real,quinineSulfateUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1PostCleaningFdom,Post-cleaning fluorescent dissolved organic matter (fDOM) reading at sensor set one (S1),real,quinineSulfateUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2PostCleaningFdom,Post-cleaning fluorescent dissolved organic matter (fDOM) reading at sensor set two (S2),real,quinineSulfateUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s1FdomCalSuccessful,Indicator of whether or not the first fluorescent dissolved organic matter (fDOM) calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2FdomCalSuccessful,Indicator of whether or not the first fluorescent dissolved organic matter (fDOM) at sensor set two (S2) calibration was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1BucketFdom,Bucket comparison fluorescent dissolved organic matter (fDOM) reading at sensor set one (S1),real,quinineSulfateUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2BucketFdom,Bucket comparison fluorescent dissolved organic matter (fDOM) reading at sensor set two (S2),real,quinineSulfateUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,fDOMComparisonSuccessful,Indicator of whether or not the first fluorescent dissolved organic matter (fDOM) sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1FdomCal2Successful,Indicator of whether or not the second fluorescent dissolved organic matter (fDOM) calibration at sensor set one (S1) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s2FdomCal2Successful,Indicator of whether or not the second fluorescent dissolved organic matter (fDOM) calibration at sensor set two (S2) was successful,string,NA,expanded,LOV,NA,NA
+ais_multisondeCleanCal,s1BucketFdom2,Second bucket comparison fluorescent dissolved organic matter (fDOM) reading at sensor set one (S1),real,quinineSulfateUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,s2BucketFdom2,Second bucket comparison fluorescent dissolved organic matter (fDOM) reading at sensor set two (S2),real,quinineSulfateUnit,expanded,*.##(round),NA,NA
+ais_multisondeCleanCal,fDOMComparison2Successful,Indicator of whether or not the second fluorescent dissolved organic matter (fDOM) sensor comparison was successful,string,NA,expanded,LOV,NA,NA
+science_review_flags,srfID,Record identifier for science review flag,integer,NA,basic,asIs,NA,NA
+science_review_flags,startDateTime,Date and time at which a sampling is initiated,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z',NA,NA
+science_review_flags,endDateTime,Date and time at which a sampling is completed,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z',NA,NA
+science_review_flags,domainID,Unique identifier of the NEON domain,string,NA,basic,asIs,NA,NA
+science_review_flags,siteID,NEON site code,string,NA,basic,asIs,NA,NA
+science_review_flags,dpID,"Data product identifier in the form of DPL.DPNUM.REV where DPL indicates data product level (0-4), DPNUM indicates a five-numeral identification number for the data product, and REV indicates a revision number.",string,NA,basic,asIs,NA,NA
+science_review_flags,fieldName,Parameter name in data file,string,NA,basic,asIs,NA,NA
+science_review_flags,horizontalPosition,"A three-character alphanumeric code for the measurement locations within one horizontal plane. For example, if one surface measurement were made at each of five soil array plots, the number in the HOR field would range from 001-005.",string,NA,basic,asIs,NA,NA
+science_review_flags,verticalPosition,"A three-character alphanumeric code for the measurement locations within one vertical plane. For example, if one temperature measurement is made at each vertical level of a tower with 8 levels, the number in the VER field would range from 010-080.",string,NA,basic,asIs,NA,NA
+science_review_flags,srfValue,Value of the science review quality flag (0=previous quality concern resolved and final quality flag correctly reflects data quality; 1=fail but data retained and may be useful with additional corrections or filtering; 2=fail and data redacted; Empty=not reviewed),integer,NA,basic,asIs,NA,NA
+science_review_flags,srfValueJustification,Justification for srfValue. Updates to srfValue will be documented by multiple justifications separated by colon symbols.,string,NA,basic,asIs,NA,NA
+science_review_flags,createDateTime,The date and time the science review flag was first generated,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z',NA,NA
+science_review_flags,lastUpdateDateTime,The date and time the science review flag was last updated,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z',NA,NA
+sensor_positions,HOR.VER,"The combined value of the horizontal and vertical location indices specified in each data file name. The HOR index is a three-character alphanumeric code for the measurement locations within one horizontal plane. For example, if one surface measurement were made at each of five soil array plots, the number in the HOR field would range from 001-005. The VER index is a three-character alphanumeric code for the measurement locations within one vertical plane. For example, if one temperature measurement is made at each vertical level of a tower with 8 levels, the number in the VER field would range from 010-080.",string,NA,basic,asIs,NA,NA
+sensor_positions,sensorLocationID,The unique identifier for the location used by NEON for where the sensor was installed.,string,NA,basic,asIs,NA,NA
+sensor_positions,sensorLocationDescription,The description of the location where the sensor was installed.,string,NA,basic,asIs,NA,NA
+sensor_positions,positionStartDateTime,"The start date and time in UTC for the position information supplied for the location. If the position or orientation of the location changed over time, additional rows will supply the full history.",dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z'(floor),NA,NA
+sensor_positions,positionEndDateTime,The end date and time in UTC for the position information supplied for the location. A blank value indicates that the position information was still valid for the location at the time of publishing.,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z'(floor),NA,NA
+sensor_positions,referenceLocationID,"The unique identifier for the reference location from which the xOffset, yOffset, and zOffset distances are measured.",string,NA,basic,asIs,NA,NA
+sensor_positions,referenceLocationIDDescription,The description of the reference location.,string,NA,basic,asIs,NA,NA
+sensor_positions,referenceLocationIDStartDateTime,"The start date and time in UTC for the position information supplied for the reference location. If the position of the reference location changed over time, additional rows will supply the full history.",dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z'(floor),NA,NA
+sensor_positions,referenceLocationIDEndDateTime,The end date and time in UTC for the position information supplied for the reference location.,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z'(floor),NA,NA
+sensor_positions,xOffset,"The offset along the x-axis of the local coordinate frame, in meters, from the reference location to the location where the sensor was installed.",real,meter,basic,*.##(round),NA,NA
+sensor_positions,yOffset,"The offset along the y-axis of the local coordinate frame, in meters, from the reference location to the location where the sensor was installed.",real,meter,basic,*.##(round),NA,NA
+sensor_positions,zOffset,"The offset along the z-axis of the local coordinate frame, in meters, from the reference location to the location where the sensor was installed. The z-axis is always aligned with up, positive values indicating heights above the reference location.",real,meter,basic,*.##(round),NA,NA
+sensor_positions,pitch,"The elevation angle, in degrees, in the vertical plane at which the sensor is oriented relative to the horizontal plane. Some sensors differ from this convention. See the product detail page for any exceptions.",real,degrees,basic,*.##(round),NA,NA
+sensor_positions,roll,"The roll angle at which the sensor is oriented, in degrees, about the longitudinal axis of the sensor",real,degrees,basic,*.##(round),NA,NA
+sensor_positions,azimuth,"The azimuth or yaw angle, in degrees, at which the sensor is facing relative to true north. Some sensors differ from this convention. See the product detail page for any exceptions.",real,degrees,basic,*.##(round),NA,NA
+sensor_positions,locationReferenceLatitude,"The geographic latitude, in degrees, of the reference location.",real,degrees,basic,*.######(round),NA,NA
+sensor_positions,locationReferenceLongitude,"The geographic longitude, in degrees, of the reference location.",real,degrees,basic,*.######(round),NA,NA
+sensor_positions,locationReferenceElevation,"The elevation, in meters, above mean sea level.",real,meter,basic,*.##(round),NA,NA
+sensor_positions,eastOffset,"The offset along the cardinal east direction, in meters, from the reference location to the location where the sensor was installed.",real,meter,basic,*.##(round),NA,NA
+sensor_positions,northOffset,"The offset along the cardinal north (true) direction, in meters, from the reference location to the location where the sensor was installed.",real,meter,basic,*.##(round),NA,NA
+sensor_positions,xAzimuth,"The azimuth, in degrees, of the local x-axis with respect to true north, used to convert the distance offset measured along the local x-axis (xOffset) to the offset along the cardinal east direction (eastOffset).",real,degrees,basic,*.##(round),NA,NA
+sensor_positions,yAzimuth,"The azimuth, in degrees, of the local y-axis with respect to true north, used to convert the distance offset measured along the local y-axis (yOffset) to the offset along the cardinal north direction (northOffset).",real,degrees,basic,*.##(round),NA,NA
+waq_instantaneous,domainID,Unique identifier of the NEON domain,string,NA,appended by stackByTable,NA,N,NA
+waq_instantaneous,siteID,NEON site code,string,NA,appended by stackByTable,NA,N,NA
+waq_instantaneous,horizontalPosition,Index of horizontal location at a NEON site,string,NA,appended by stackByTable,NA,N,NA
+waq_instantaneous,verticalPosition,Index of vertical location at a NEON site,string,NA,appended by stackByTable,NA,N,NA
+waq_instantaneous,startDateTime,Date and time at which a sampling is initiated,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z'(floor),NA,NA
+waq_instantaneous,endDateTime,Date and time at which a sampling is completed,dateTime,NA,basic,yyyy-MM-dd'T'HH:mm:ss'Z'(floor),NA,NA
+waq_instantaneous,sensorDepth,Water depth of measurement,real,meter,basic,*.#(round),NA,NA
+waq_instantaneous,sensorDepthExpUncert,Expanded uncertainty for sensor depth,real,meter,basic,*.#(round),NA,NA
+waq_instantaneous,sensorDepthRangeQF,Water depth of measurement quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,sensorDepthNullQF,Water depth of measurement quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,sensorDepthGapQF,Water depth of measurement quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,sensorDepthValidCalQF,"Quality flag for the valid calibration check of sensor depth detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e., could not be run))",signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,sensorDepthSuspectCalQF,Quality flag for the suspect calibration check of sensor depth detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,sensorDepthPersistQF,Water depth of measurement quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,sensorDepthAlphaQF,Water depth of measurement quality assurance and quality control report for the alpha quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,sensorDepthBetaQF,Water depth of measurement quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,sensorDepthFinalQF,Water depth final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),signed integer,NA,basic,integer,NA,NA
+waq_instantaneous,sensorDepthFinalQFSciRvw,"Sensor depth quality flag indicating whether a data product has failed a science review of its quality, detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductance,Conductivity auto-corrected to 25 degrees C,real,microsiemensPerCentimeter,basic,*.##(round),NA,NA
+waq_instantaneous,specificConductanceExpUncert,Expanded uncertainty for specific conductance,real,microsiemensPerCentimeter,basic,*.##(round),NA,NA
+waq_instantaneous,specificConductanceRangeQF,Specific conductance quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductanceStepQF,Specific conductance quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductanceNullQF,Specific conductance quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductanceGapQF,Specific conductance quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductanceSpikeQF,"Specific conductance quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e., could not be run))",signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductanceValidCalQF,"Quality flag for the valid calibration check of specific conductance detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e., could not be run))",signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificCondSuspectCalQF,Quality flag for the suspect calibration check of specific conductance detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductancePersistQF,Specific conductance quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductanceAlphaQF,Specific conductance quality assurance and quality control report for the alpha quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificConductanceBetaQF,Specific conductance quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,specificCondFinalQF,Specific conductance final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),signed integer,NA,basic,integer,NA,NA
+waq_instantaneous,specificCondFinalQFSciRvw,"Specific conductance final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",unsigned integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygen,Dissolved Oxygen Concentration,real,milligramsPerLiter,basic,*.##(round),NA,NA
+waq_instantaneous,dissolvedOxygenExpUncert,Expanded uncertainty for dissolved oxygen,real,milligramsPerLiter,basic,*.##(round),NA,NA
+waq_instantaneous,dissolvedOxygenRangeQF,Dissolved oxygen quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenStepQF,Dissolved oxygen quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenNullQF,Dissolved oxygen quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenGapQF,Dissolved oxygen quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenSpikeQF,Dissolved oxygen quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenValidCalQF,Quality flag for the valid calibration check of dissolved oxygen detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenSuspectCalQF,Quality flag for the suspect calibration check of dissolved oxygen detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenPersistenceQF,Dissolved oxygen quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenAlphaQF,Dissolved oxygen quality assurance and quality control report for the alpha quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenBetaQF,Dissolved oxygen quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,dissolvedOxygenFinalQF,Dissolved oxygen final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),signed integer,NA,basic,integer,NA,NA
+waq_instantaneous,dissolvedOxygenFinalQFSciRvw,"Dissolved oxygen final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDissolvedOxygenSat,Dissolved oxygen percent saturation corrected to sea level,real,percent,basic,*.##(round),NA,NA
+waq_instantaneous,seaLevelDOSatExpUncert,Expanded uncertainty for dissolved oxygen saturation corrected to sea level,real,percent,basic,*.##(round),NA,NA
+waq_instantaneous,seaLevelDOSatRangeQF,Dissolved oxygen saturation corrected to sea level quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatStepQF,Dissolved oxygen saturation corrected to sea level quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatNullQF,Dissolved oxygen saturation corrected to sea level quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatGapQF,Dissolved oxygen saturation corrected to sea level quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatSpikeQF,Dissolved oxygen saturation corrected to sea level quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatValidCalQF,Quality flag for the valid calibration check of dissolved oxygen saturation corrected to sea level detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatSuspectCalQF,Quality flag for the suspect calibration check of dissolved oxygen saturation corrected to sea level detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatPersistQF,Dissolved oxygen saturation corrected to sea level quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatAlphaQF,Dissolved oxygen saturation corrected to sea level quality assurance and quality control report for the alpha quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatBetaQF,Dissolved oxygen saturation corrected to sea level quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,seaLevelDOSatFinalQF,Dissolved oxygen saturation corrected to sea level final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),unsigned integer,NA,basic,integer,NA,NA
+waq_instantaneous,seaLevelDOSatFinalQFSciRvw,"Dissolved oxygen saturation corrected to sea level final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",unsigned integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDissolvedOxygenSat,Dissolved oxygen percent saturation at local conditions,real,percent,basic,*.##(round),NA,NA
+waq_instantaneous,localDOSatExpUncert,Expanded uncertainty for dissolved oxygen saturation at local conditions,real,percent,basic,*.##(round),NA,NA
+waq_instantaneous,localDOSatRangeQF,Dissolved oxygen saturation at local conditions quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatStepQF,Dissolved oxygen saturation at local conditions quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatNullQF,Dissolved oxygen saturation at local conditions quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatGapQF,Dissolved oxygen saturation at local conditions quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatSpikeQF,Dissolved oxygen saturation at local conditions quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatValidCalQF,Quality flag for the valid calibration check of dissolved oxygen saturation at local conditions detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatSuspectCalQF,Quality flag for the suspect calibration check of dissolved oxygen saturation at local conditions detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatPersistQF,Dissolved oxygen saturation at local conditions quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatAlphaQF,Dissolved oxygen saturation at local conditions quality assurance and quality control report for the alpha quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatBetaQF,Dissolved oxygen saturation at local conditions quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,localDOSatFinalQF,Dissolved oxygen saturation at local conditions final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),unsigned integer,NA,basic,integer,NA,NA
+waq_instantaneous,localDOSatFinalQFSciRvw,"Dissolved oxygen saturation at local conditions final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",unsigned integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pH,Measurement of pH in sample,real,pH,basic,*.##(round),NA,NA
+waq_instantaneous,pHExpUncert,Expanded uncertainty for pH,real,pH,basic,*.##(round),NA,NA
+waq_instantaneous,pHRangeQF,pH quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHStepQF,pH quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHNullQF,pH quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHGapQF,pH quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHSpikeQF,pH quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHValidCalQF,Quality flag for the valid calibration check of pH detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHSuspectCalQF,Quality flag for the suspect calibration check of pH detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHPersistenceQF,pH quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHAlphaQF,pH quality assurance and quality control report for the alpha quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHBetaQF,pH quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,pHFinalQF,pH final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),unsigned integer,NA,basic,integer,NA,NA
+waq_instantaneous,pHFinalQFSciRvw,"pH final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",unsigned integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyll,Chlorophyll a concentration in water,real,microgramsPerLiter,basic,*.##(round),NA,NA
+waq_instantaneous,chlorophyllExpUncert,Expanded uncertainty for chlorophyll a,real,microgramsPerLiter,basic,*.##(round),NA,NA
+waq_instantaneous,chlorophyllRangeQF,Chlorophyll a quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllStepQF,Chlorophyll a quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllNullQF,Chlorophyll a quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllGapQF,Chlorophyll a quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllSpikeQF,Chlorophyll a quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllValidCalQF,Quality flag for the valid calibration check of chlorophyll a detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllSuspectCalQF,Quality flag for the suspect calibration check of chlorophyll a detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllPersistenceQF,Chlorophyll a quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllAlphaQF,Chlorophyll a quality assurance and quality control report for the alchlorophyll aa quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllBetaQF,Chlorophyll a quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlorophyllFinalQF,Chlorophyll a final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),unsigned integer,NA,basic,integer,NA,NA
+waq_instantaneous,chlorophyllFinalQFSciRvw,"Chlorophyll a final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",unsigned integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelativeFluorescence,Fluorescence response to chlorophyll a,real,NA,basic,*.##(round),NA,NA
+waq_instantaneous,chlaRelFluoroExpUncert,Expanded uncertainty for fluorescence response to chlorophyll a,real,microgramsPerLiter,basic,*.##(round),NA,NA
+waq_instantaneous,chlaRelFluoroRangeQF,Fluorescence response to chlorophyll a quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroStepQF,Fluorescence response to chlorophyll a quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroNullQF,Fluorescence response to chlorophyll a quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroGapQF,Fluorescence response to chlorophyll a quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroSpikeQF,Fluorescence response to chlorophyll a quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroValidCalQF,Quality flag for the valid calibration check of fluorescence response to chlorophyll a detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroSuspectCalQF,Quality flag for the suspect calibration check of fluorescence response to chlorophyll a detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroPersistenceQF,Fluorescence response to chlorophyll a quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroAlphaQF,Fluorescence response to chlorophyll a quality assurance and quality control report for the alchlorophyll aa quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroBetaQF,Fluorescence response to chlorophyll a quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,chlaRelFluoroFinalQF,Fluorescence response to chlorophyll a final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),unsigned integer,NA,basic,integer,NA,NA
+waq_instantaneous,chlaRelFluoroFinalQFSciRvw,"Fluorescence response to chlorophyll a final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",unsigned integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidity,Turbidity of water as FNU,real,formazinNephelometricUnit,basic,*.##(round),NA,NA
+waq_instantaneous,turbidityExpUncert,Expanded uncertainty for turbidity,real,formazinNephelometricUnit,basic,*.##(round),NA,NA
+waq_instantaneous,turbidityRangeQF,Turbidity quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidityStepQF,Turbidity quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidityNullQF,Turbidity quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidityGapQF,Turbidity quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbiditySpikeQF,Turbidity quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidityValidCalQF,Quality flag for the valid calibration check of turbidity detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbiditySuspectCalQF,Quality flag for the suspect calibration check of turbidity detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidityPersistenceQF,Turbidity quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidityAlphaQF,Turbidity quality assurance and quality control report for the alturbiditya quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidityBetaQF,Turbidity quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,turbidityFinalQF,Turbidity final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),unsigned integer,NA,basic,integer,NA,NA
+waq_instantaneous,turbidityFinalQFSciRvw,"Turbidity final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",unsigned integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOM,Fluorescent dissolved organic matter concentration as quinine sulfate equivalents,real,quinineSulfateUnit,basic,*.##(round),NA,NA
+waq_instantaneous,rawCalibratedfDOM,Calibrated fluorescent dissolved organic matter concentration as quinine sulfate equivalents without temperature or absorbance corrections,real,quinineSulfateUnit,basic,*.##(round),NA,NA
+waq_instantaneous,fDOMExpUncert,Expanded uncertainty for fDOM,real,quinineSulfateUnit,basic,*.##(round),NA,NA
+waq_instantaneous,fDOMRangeQF,fDOM quality flag for the range test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMStepQF,fDOM quality flag for the step test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMNullQF,fDOM quality flag for the null test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMGapQF,fDOM quality flag for the gap test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMSpikeQF,fDOM quality flag for the spike test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMValidCalQF,Quality flag for the valid calibration check of fDOM detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMSuspectCalQF,Quality flag for the suspect calibration check of fDOM detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMPersistenceQF,fDOM quality flag for the persistence test detailed in NEON.DOC.011081 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMAlphaQF,fDOM quality assurance and quality control report for the alfDOMa quality flag that indicates if one or more quality analysis failed for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMBetaQF,fDOM quality assurance and quality control report for the beta quality flag which indicates if one or more quality analysis could not be run for a datum detailed in NEON.DOC.001113 (1=fail 0=pass -1=NA (i.e could not be run)),signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMTempQF,Quality flag indicating that fDOM temperature corrections were applied = 0 or unable to be applied = 1,signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMAbsQF,Quality flag indicating that fDOM absorbance corrections were applied = 0; unable to be applied = 1; absorbance values were high = 2; calculated correction factor was 1 (i.e. no absorbance correction was made) = 3,signed integer,NA,expanded,integer,NA,NA
+waq_instantaneous,fDOMFinalQF,fDOM final quality flag indicating whether a data product has passed or failed an overall assessment of its quality; detailed in NEON.DOC.004931 (1=fail; 0=pass),unsigned integer,NA,basic,integer,NA,NA
+waq_instantaneous,fDOMFinalQFSciRvw,"fDOM final quality flag indicating whether a data product has failed a science review of its quality detailed in NEON.DOC.001113 (2=fail and data redacted, 1=fail but data retained and may be useful with additional corrections or filtering, 0=previous quality concern resolved and final quality flag correctly reflects data quality, Empty=pass/not reviewed)",unsigned integer,NA,expanded,integer,NA,NA
+waq_instantaneous,buoyNAFlag,Flag indicating that data could not be published due to an error on the buoy (1=fail 0=pass -1=NA (i.e. could not be run)),signed integer,NA,basic,integer,NA,NA
+waq_instantaneous,spectrumCount,The number of absorbance spectra (AKA SUNA light frames) that were averaged to correct the fDOM and or chla data. Up to 50 light frames will be averaged,integer,number,expanded,integer,NA,NA
+waq_instantaneous,publicationDate,Date of data publication on the NEON data portal,dateTime,NA,appended by stackByTable,NA,N,NA
+waq_instantaneous,release,Identifier for data release,string,NA,appended by stackByTable,NA,N,NA
