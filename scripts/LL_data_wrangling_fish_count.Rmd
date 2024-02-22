@@ -16,7 +16,7 @@ fish_data<- read.csv(here("data", "raw", "fsh_perPass.csv"))
 
 ```
 
-selecting important columns
+selecting important columns for abiotic data
 ```{r}
 fish_data_abiotic<- fish_data %>% 
   select(siteID, waterTemp, dissolvedOxygen, ) %>% 
@@ -24,11 +24,40 @@ fish_data_abiotic<- fish_data %>%
   filter(!is.na(dissolvedOxygen))
 ```
 
-mean of data by column 
+mean of data by column for abioic data 
 ```{r}
+fish_data_abiotic_means <- fish_data_abiotic %>% 
+  group_by(siteID) %>% 
+  summarise(mean_temp = mean(waterTemp), 
+            mean_DO = mean(dissolvedOxygen))
+
 fish_data_abiotic %>% 
-  filter(siteID == CRAM) %>% 
-  summarise(mean(waterTemp)) %>% 
-  summarise(mean(dissolvedOxygen))
+  summary()
+```
+import data for fish count
+```{r}
+fish_count_data <- fsh_perFish %>% 
+  select(siteID, scientificName,fishTotalLength, fishWeight, fishLifeStage, passStartTime) %>% 
+  filter(!is.na(scientificName), !is.na(fishTotalLength), !is.na(fishWeight), !is.na(fishLifeStage)) %>% 
+  mutate(collectDate = as_date(passStartTime)) %>% 
+  mutate(collectMonth = month(collectDate), collectYear = year(collectDate)) %>% 
+  select(-passStartTime)
+```
+
+group site ID and date together and collect means 
+```{r}
+fish_count_data_means<- fish_count_data %>%
+  group_by(siteID, collectMonth, collectYear) %>%
+  summarize(mean_weight = mean(fishWeight), mean_length = mean(fishTotalLength))
+  
+```
+save data to processed 
+```{r}
+  fish_count_data %>% 
+  write_csv(here("data", "processed", "final_fish_count_gen.csv"))
+
+fish_count_data_means %>% 
+  write_csv(here("data", "processes", "final_fish_count_means.csv"))
+
 ```
 
