@@ -1,0 +1,34 @@
+---
+title: "LL_data_wrangling_fish_count"
+author: "Reina Scott"
+date: "2024-02-21"
+output: html_document
+---
+
+loading packages
+```{r}
+library(here)
+library(tidyverse)
+```
+import raw data 
+```{r}
+fish_data<- read.csv(here("data", "raw", "fsh_perPass.csv"))
+
+```
+
+selecting important columns
+```{r}
+fish_data_abiotic<- fish_data %>% 
+  select(siteID, waterTemp, dissolvedOxygen, ) %>% 
+  filter(!is.na(waterTemp)) %>% 
+  filter(!is.na(dissolvedOxygen))
+```
+
+mean of data by column 
+```{r}
+fish_data_abiotic %>% 
+  filter(siteID == CRAM) %>% 
+  summarise(mean(waterTemp)) %>% 
+  summarise(mean(dissolvedOxygen))
+```
+
