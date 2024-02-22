@@ -1,0 +1,62 @@
+---
+title: "Water Qual Wrangling"
+author: "Niko"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+# Load the tidyverse package
+# Load the here package
+
+library(here)
+library(tidyverse)
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+# Read in Titanic data
+water_qual <- read_csv(here("data", "raw", "waq_instantaneous.csv"))
+
+# Preview the data
+head(water_qual)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+# Subset by variables
+subset_waterqual2 <- water_qual %>%
+  select(siteID, pH, chlorophyll, dissolvedOxygen, endDateTime) %>%
+  arrange(siteID)
+print(subset_waterqual2)
+```
+
+```{r}
+# Store "no NA" subset as a new object
+
+waterqual2_no_NAs <- drop_na(subset_waterqual2)
+
+head(waterqual2_no_NAs)
+```
+
+
+```{r}
+waterqual2_no_NAs %>%
+  write_csv(here("data", "processed", "finalwaterqual.csv"))
+```
+
