@@ -44,4 +44,27 @@ select(-collectDate)
 
 ```
 
+```{r}
+pacman::p_load(tidyverse, here, palmerpenguins, cowplot, viridis)
+```
+
+
+```{r}
+ggplot(data = subset_data ,
+       aes(x = adjAshFreeDryMass))  +
+  geom_histogram() 
+```
+```{r}
+ggplot(data = subset_data, 
+       mapping = aes(x = siteID,
+                     y = adjAshFreeDryMass)) + 
+  geom_boxplot() +
+  labs(x = "Site", 
+       y = "adjAshFreeDryMass (g/L") +
+  #scale_y_continuous(limits = c(20, 60),
+                     #breaks = seq(20, 60, 10)) +
+  theme_bw()
+
+```
+
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
