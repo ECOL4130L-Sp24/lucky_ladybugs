@@ -94,11 +94,14 @@ You should **also** access the data product on the [NEON Data Portal](https://da
 ```{r save metadata csv}
 
 # Variable names and units: periphyton
-variables_20166 %>% 
-  write_csv(here("data", "raw", "variables_20166.csv"))
+alg_biomass %>% 
+  write_csv(here("data", "raw", "alg_biomass.csv"))
 
 ```
 Since our beetle count data would be in the "bet_sorting" table, we want to save that file to our `raw` data subfolder. It is likely also prudent to go ahead and save the bet_fielddata, since that provides information about the sampling sites. 
+```{r}
+mutate
+```
 
 Remember, if you do *not* initially save a raw file but realize you need it later, you can always re-run the NEON data download commands for the same site(s) and date range to save additional files. 
 
