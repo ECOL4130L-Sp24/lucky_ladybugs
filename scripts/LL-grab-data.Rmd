@@ -34,6 +34,9 @@ fish_count <- "DP1.20107.001"
 #water quality 
 water_quality <- "DP1.20288.001"
 
+#nutrients 
+nutrient<- "DP1.20093.001"
+
 # Two selected focal sites
 my_sites <- c("TOOK", "CRAM", "PRLA")
 
@@ -46,12 +49,17 @@ end_date <- "2021-12"
 
 download data
 ```{r}
-# We'll pull the ground beetle data first
-list2env((loadByProduct(dpID = fish_count, 
+# 
+list2env((loadByProduct(dpID = nutrient, 
                         site = my_sites, 
                         #include.provisional = FALSE,
                         startdate = start_date,
                         enddate = end_date)),
          .GlobalEnv)
+```
+```{r}
+#save files to data folder! 
+variables_20093
+write_csv(here())
 ```
 

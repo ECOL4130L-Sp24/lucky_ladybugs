@@ -53,11 +53,11 @@ fish_count_data_means<- fish_count_data %>%
 ```
 save data to processed 
 ```{r}
-  fish_count_data %>% 
+fish_count_data %>% 
   write_csv(here("data", "processed", "final_fish_count_gen.csv"))
 
 fish_count_data_means %>% 
-  write_csv(here("data", "processes", "final_fish_count_means.csv"))
+  write_csv(here("data", "processed", "final_fish_count_means.csv"))
 
 ```
 
