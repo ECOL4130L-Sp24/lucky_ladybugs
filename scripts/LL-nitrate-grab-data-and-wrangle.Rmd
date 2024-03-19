@@ -1,0 +1,61 @@
+---
+title: "wrangle_nitrate_data"
+author: "Reina Scott"
+date: "2024-03-19"
+output: html_document
+---
+load packages 
+```{r}
+
+library(tidyverse)
+library(neonUtilities)
+library(here)
+```
+
+name objects
+```{r}
+nitrate <- "DP1.20033.001"
+
+my_sites <- c("TOOK", "CRAM", "PRLA")
+```
+
+pull data from neon 
+```{r}
+list2env(loadByProduct(dpID = nitrate, 
+                        site = my_sites, 
+                        include.provisional = FALSE),
+         .GlobalEnv)
+```
+save data to raw data folder 
+```{r}
+variables_20033 %>% 
+  write_csv(here("data", "raw", "variables_20033.csv"))
+
+NSW_15_minute %>% 
+  write_csv(here("data", "raw", "NSW_15_minute.csv"))
+
+```
+
+wrangle data 
+```{r}
+SW_Nitrate<- read.csv(here("data", "raw", "NSW_15_minute.csv"))
+
+SW_Nitrate_means_noNAs<- SW_Nitrate %>% 
+  select(siteID, surfWaterNitrateMean, startDateTime, endDateTime) %>% 
+  arrange(siteID) %>% 
+  na.omit(SW_Nitrate_means)
+```
+group by year and month and get means of years 
+```{r}
+SW_Nitrate_means <- SW_Nitrate_means_noNAs %>% 
+  mutate(collectDate = as_date(endDateTime)) %>% 
+  mutate(collectMonth = month(endDateTime), collectYear = year(endDateTime)) %>% 
+ group_by(siteID, collectYear, collectMonth) %>% 
+  summarise(mean_SWN = surfWaterNitrateMean)
+```
+save data 
+```{r}
+SW_Nitrate_means %>% 
+  write_csv(here("data", "processed", "SW_Nitrate_means"))
+```
+
