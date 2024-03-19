@@ -53,10 +53,22 @@ waterqual2_no_NAs <- drop_na(subset_waterqual2)
 
 head(waterqual2_no_NAs)
 ```
+change data and time and organize by means 
+```{r}
+
+waterqual_means<- waterqual2_no_NAs %>% 
+  mutate(collectDate = as_date(endDateTime)) %>% 
+  mutate(collectMonth = month(endDateTime), collectYear = year(endDateTime)) %>% 
+ group_by(siteID, collectYear, collectMonth) %>% 
+  summarise(mean_pH = mean(pH), 
+            mean_DO = mean(dissolvedOxygen), mean_chlorophyll=(chlorophyll))
+
+
+```
 
 
 ```{r}
-waterqual2_no_NAs %>%
-  write_csv(here("data", "processed", "finalwaterqual.csv"))
+waterqual_means %>%
+  write_csv(here("data", "processed", "waterqual_means.csv"))
 ```
 

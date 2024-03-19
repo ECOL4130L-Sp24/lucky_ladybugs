@@ -59,7 +59,8 @@ list2env((loadByProduct(dpID = nutrient,
 ```
 ```{r}
 #save files to data folder! 
-variables_20093
-write_csv(here())
+variables_20093 %>% 
+  write_csv(here("data", "raw", "variables_20093.csv"))
+
 ```
 
