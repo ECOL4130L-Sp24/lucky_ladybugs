@@ -28,3 +28,30 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+#Load the tidyverse package
+
+#Load the here package
+ #install.packages ('tidyverse', 'here')
+#library("readr")
+library("tidyverse")
+library("here")
+# install.packages("devtools")
+
+#install.packages("rvest")
+```
+```{r}
+raw_biomass<-read_csv("data/raw/alg_biomass.csv")
+raw_perFish<-read_csv("data/raw/fsh_perFish.csv")
+raw_perPass<-read_csv("data/raw/fsh_perPass.csv")
+raw_waq<-read_csv("data/raw/waq_instantaneous.csv")
+```
+```{r}
+joined<-full_join(raw_biomass,raw_perFish)%>%
+  full_join(., raw_perPass) %>%
+full_join(., raw_waq)
+
+
+head(joined)
+```
+
