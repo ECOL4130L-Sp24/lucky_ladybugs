@@ -56,6 +56,6 @@ SW_Nitrate_means <- SW_Nitrate_means_noNAs %>%
 save data 
 ```{r}
 SW_Nitrate_means %>% 
-  write_csv(here("data", "processed", "SW_Nitrate_means"))
+  write_csv(here("data", "processed", "SW_Nitrate_means.csv"))
 ```
 
