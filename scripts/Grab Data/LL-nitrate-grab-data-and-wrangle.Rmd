@@ -59,3 +59,57 @@ SW_Nitrate_means %>%
   write_csv(here("data", "processed", "SW_Nitrate_means.csv"))
 ```
 
+name objects
+```{r}
+waterqual <- "DP1.20093"
+my_sites1 <- c("TOOK", "CRAM", "PRLA")
+```
+pull data from neon 
+```{r}
+list2env(loadByProduct(dpID = waterqual, 
+                        site = my_sites1, 
+                        include.provisional = TRUE),
+         .GlobalEnv)
+```
+
+save data to raw data folder 
+```{r}
+variables_20093 %>% 
+  write_csv(here("data", "raw", "variables_20093.csv"))
+
+swc_externalLabDataByAnalyte %>% 
+  write_csv(here("data", "raw", "nutrientdata.csv"))
+
+```
+
+wrangle data 
+```{r}
+nutrientdata<- read.csv(here("data", "raw", "nutrientdata.csv"))
+
+nutrientdata_noNAs<- nutrientdata %>% 
+  select(siteID, analyte, collectDate) %>% 
+  arrange(siteID) %>% 
+  subset(analyte == c("TN", "TP", "Ortho-P", "NH4-N", "NO3+NO2 - N" )) %>% 
+  na.omit(nutrientdata)
+```
+create columns for each nutrient data 
+```{r}
+nutrientdata_noNAs2 <- nutrientdata %>% 
+  
+```
+
+
+
+group by year and month and get means of years 
+```{r}
+SW_Nitrate_means <- SW_Nitrate_means_noNAs %>% 
+  mutate(collectDate = as_date(endDateTime)) %>% 
+  mutate(collectMonth = month(endDateTime), collectYear = year(endDateTime)) %>% 
+ group_by(siteID, collectYear, collectMonth) %>% 
+  summarise(mean_SWN = surfWaterNitrateMean)
+```
+save data 
+```{r}
+SW_Nitrate_means %>% 
+  write_csv(here("data", "processed", "SW_Nitrate_means.csv"))
+```
