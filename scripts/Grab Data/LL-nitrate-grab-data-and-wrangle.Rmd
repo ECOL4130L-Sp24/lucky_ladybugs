@@ -87,29 +87,83 @@ wrangle data
 nutrientdata<- read.csv(here("data", "raw", "nutrientdata.csv"))
 
 nutrientdata_noNAs<- nutrientdata %>% 
-  select(siteID, analyte, collectDate) %>% 
+  select(siteID, analyte, analyteConcentration, analyteUnits, collectDate) %>% 
   arrange(siteID) %>% 
-  subset(analyte == c("TN", "TP", "Ortho-P", "NH4-N", "NO3+NO2 - N" )) %>% 
+  subset(analyte == c("TN", "TP", "Ortho-P", "NH4 - N", "NO3+NO2 - N" )) %>% 
+  group_by(analyte) %>% 
   na.omit(nutrientdata)
 ```
-create columns for each nutrient data 
+create objects for each nutrient data 
 ```{r}
-nutrientdata_noNAs2 <- nutrientdata %>% 
-  
+#create new dataframe to use 
+nutrientdataALL <- nutrientdata %>% 
+  select(siteID, analyte, analyteConcentration, analyteUnits, collectDate) %>% 
+  arrange(siteID) %>% 
+  subset(analyte == c("TN", "TP", "Ortho - P", "NH4 - N", "NO3+NO2 - N" )) %>% 
+  group_by(analyte) 
+
+
+#Total Nitrate
+nutrientdataTN <- nutrientdataALL %>% 
+  subset(analyte == "TN") %>% 
+  rename(TNConcentration_mgL = analyteConcentration) %>% 
+  subset(select = -analyte) %>% 
+  subset(select = -analyteUnits) %>% 
+  na.omit(nutrientdataALL)
+
+#Total Phosphate 
+nutrientdataTP <- nutrientdataALL %>% 
+  subset(analyte == "TP") %>% 
+  rename(TPConcentration_mgL = analyteConcentration) %>% 
+  subset(select = -analyte) %>% 
+  subset(select = -analyteUnits) %>% 
+    na.omit(nutrientdataALL)
+
+
+#Ortho-P 
+nutrientdataOrthoP <- nutrientdataALL %>% 
+  subset(analyte == "Ortho - P") %>% 
+  rename(OrthoPConcentration_mgL = analyteConcentration) %>% 
+  subset(select = -analyte) %>% 
+  subset(select = -analyteUnits) %>%  
+  na.omit(nutrientdataALL)
+
+#NH4-N 
+nutrientdataNH4 <- nutrientdataALL %>% 
+  subset(analyte == "NH4 - N") %>% 
+  rename(NH4Concentration_mgL = analyteConcentration) %>% 
+  subset(select = -analyte) %>% 
+  subset(select = -analyteUnits) %>% 
+    na.omit(nutrientdataALL)
+
+#NO3+NO2-N
+nutrientdataNO3NO2 <- nutrientdataALL %>% 
+  subset(analyte == "NO3+NO2 - N") %>% 
+  rename(NO3NO2Concentration_mgL = analyteConcentration) %>% 
+  subset(select = -analyte) %>% 
+  subset(select = -analyteUnits) %>% 
+    na.omit(nutrientdataALL)
 ```
-
-
+merge all of the datasets together
+```{r}
+finalnutrientdata<- full_join(nutrientdataNO3NO2, nutrientdataNH4, by = c("siteID", "collectDate")) %>% 
+  full_join(nutrientdataOrthoP, by = c("siteID", "collectDate")) %>% 
+  full_join(nutrientdataTP, by = c("siteID", "collectDate")) %>% 
+ full_join(nutrientdataTN, by = c("siteID", "collectDate"))
+```
 
 group by year and month and get means of years 
 ```{r}
-SW_Nitrate_means <- SW_Nitrate_means_noNAs %>% 
-  mutate(collectDate = as_date(endDateTime)) %>% 
-  mutate(collectMonth = month(endDateTime), collectYear = year(endDateTime)) %>% 
- group_by(siteID, collectYear, collectMonth) %>% 
-  summarise(mean_SWN = surfWaterNitrateMean)
+finalnutrientdatamena <- finalnutrientdata %>% 
+ group_by(siteID, collectDate) %>% 
+  summarise(mean_TN_Con_mgL = mean(TNConcentration_mgL), 
+            mean_TP_Con_mgL = mean(TPConcentration_mgL), 
+            mean_NH4_Con_mgL = mean(NH4Concentration_mgL), 
+            mean_OrthoP_Con_mgL = mean(OrthoPConcentration_mgL), 
+            mean_NO3NO2_Con_mgL = mean(NO3NO2Concentration_mgL) )
 ```
 save data 
 ```{r}
-SW_Nitrate_means %>% 
-  write_csv(here("data", "processed", "SW_Nitrate_means.csv"))
+finalnutrientdatamena %>% 
+  write_csv(here("data", "processed", "nutrient_data_means.csv"))
 ```
