@@ -38,3 +38,23 @@ start_date <- "2016-03"
 # End date (as YYYY-MM)
 end_date <- "2021-12"
 ```
+
+
+```{r}
+# Step 1: Read the CSV files into separate data frames
+df1 <- read.csv("alg_biomass_means.csv") 
+df2 <- read.csv("final_fish_count_means.csv")
+df3 <- read.csv("waterqual_means.csv")
+df4 <- read.csv("SW_Nitrate_means.csv")
+  
+
+# Step 2: Combine the data frames into one
+merged_data_all <- rbind(df1, df2, df3, df4)
+
+# Step 3: Write the merged data frame into a new CSV file
+write.csv(merged_data_all, "merged_data.csv", row.names = FALSE)
+
+# Check the first few rows of the merged data frame
+head(merged_df)
+```
+
