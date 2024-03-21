@@ -5,22 +5,15 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
+need to adjust collectData for df5 and combine collect year and collect month
 ```{r}
 # Step 1: Read the CSV files into separate data frames
-df1 <- read.csv("alg_biomass_means.csv") 
-df2 <- read.csv("final_fish_count_means.csv")
-df3 <- read.csv("waterqual_means.csv")
-df4 <- read.csv("SW_Nitrate_means.csv")
+df1 <- read.csv(here("data", "processed", "algal_biomass", "alg_biomass_means.csv")) 
+df2 <- read.csv(here("data", "processed", "fish","final_fish_count_means.csv"))
+df3 <- read.csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.csv"))
+df4 <- read.csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
+#df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
+                
   
 
 # Step 2: Combine the data frames into one
@@ -32,13 +25,3 @@ write.csv(merged_data_all, "merged_data.csv", row.names = FALSE)
 # Check the first few rows of the merged data frame
 head(merged_df)
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
