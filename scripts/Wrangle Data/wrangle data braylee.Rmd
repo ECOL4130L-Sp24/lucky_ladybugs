@@ -29,7 +29,8 @@ You can also embed plots, for example:
 alg_biomass <- read_csv(here("data", "raw", "alg_biomass.csv"))
 ```
 ```{r}
-subset_data <- subset(alg_biomass, select = c("adjAshFreeDryMass", "siteID", "collectDate"))
+subset_data <- alg_biomass %>% 
+  select("adjAshFreeDryMass", "siteID", "collectDate2")
 ```
 
 ```{r}
@@ -68,3 +69,13 @@ ggplot(data = subset_data,
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+ alg_biomass_means<- alg_biomass %>% 
+  mutate(collectDate = as_date(collectDate2)) %>% 
+  mutate(collectMonth = month(collectDate2), collectYear = year(collectDate2)) %>% 
+ group_by(siteID, collectYear, collectMonth) %>% 
+  summarise(mean_adjAshFreeDryMass = mean(adjAshFreeDryMass)) %>%
+  write_csv(here("data", "processed", "alg_biomass_means.csv"))
+```
+
