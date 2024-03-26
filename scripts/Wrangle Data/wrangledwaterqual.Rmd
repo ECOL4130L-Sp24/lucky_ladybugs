@@ -61,7 +61,7 @@ waterqual_means<- waterqual2_no_NAs %>%
   mutate(collectMonth = month(endDateTime), collectYear = year(endDateTime)) %>% 
  group_by(siteID, collectYear, collectMonth) %>% 
   summarise(mean_pH = mean(pH), 
-            mean_DO = mean(dissolvedOxygen), mean_chlorophyll=(chlorophyll))
+            mean_DO = mean(dissolvedOxygen), mean_chlorophyll= mean(chlorophyll))
 
 
 ```

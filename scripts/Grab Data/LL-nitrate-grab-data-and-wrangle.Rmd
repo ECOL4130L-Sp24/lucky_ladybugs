@@ -51,7 +51,7 @@ SW_Nitrate_means <- SW_Nitrate_means_noNAs %>%
   mutate(collectDate = as_date(endDateTime)) %>% 
   mutate(collectMonth = month(endDateTime), collectYear = year(endDateTime)) %>% 
  group_by(siteID, collectYear, collectMonth) %>% 
-  summarise(mean_SWN = surfWaterNitrateMean)
+  summarise(mean_SWN = mean(surfWaterNitrateMean))
 ```
 save data 
 ```{r}
