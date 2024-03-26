@@ -1,5 +1,5 @@
 ---
-title: "Deliverable 3"
+title: "Deliverable 3 - Trophic Level Analysis"
 author: "Niko, Reina, and Braylee"
 date: "`r Sys.Date()`"
 output: html_document
@@ -30,3 +30,11 @@ write.csv(merged_data_all, "merged_data.csv", row.names = FALSE)
 # Check the first few rows of the merged data frame
 head(merged_data_all)
 ```
+
+
+```{r}
+
+linear_model <- lm(mean_adjAshFreeDryMass ~ mean_SWN, data = merged_data_all)
+summary(linear_model)
+```
+
