@@ -14,7 +14,6 @@ df3 <- read.csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.cs
 df4 <- read.csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
 #df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
                 
-  
 
 # Step 2: Combine the data frames into one
 merged_data_all <- rbind(df1, df2, df3, df4)
