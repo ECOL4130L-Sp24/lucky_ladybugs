@@ -4,24 +4,31 @@ author: "Niko"
 date: "`r Sys.Date()`"
 output: html_document
 ---
+```{r}
+library(here)
+library(tidyverse)
+
+```
 
 need to adjust collectData for df5 and combine collect year and collect month
 ```{r}
 # Step 1: Read the CSV files into separate data frames
-df1 <- read.csv(here("data", "processed", "algal_biomass", "alg_biomass_means.csv")) 
-df2 <- read.csv(here("data", "processed", "fish","final_fish_count_means.csv"))
-df3 <- read.csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.csv"))
-df4 <- read.csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
+df1 <- read_csv(here("data", "processed", "algal_biomass", "alg_biomass_means.csv")) 
+df2 <- read_csv(here("data", "processed", "fish","final_fish_count_means.csv"))
+df3 <- read_csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.csv"))
+df4 <- read_csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
 #df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
                 
-  
+
 
 # Step 2: Combine the data frames into one
-merged_data_all <- rbind(df1, df2, df3, df4)
+merged_data_all <- full_join(df1, df2) %>% 
+  full_join(., df3) %>% 
+  full_join(., df4)
 
 # Step 3: Write the merged data frame into a new CSV file
 write.csv(merged_data_all, "merged_data.csv", row.names = FALSE)
 
 # Check the first few rows of the merged data frame
-head(merged_df)
+head(merged_data_all)
 ```
