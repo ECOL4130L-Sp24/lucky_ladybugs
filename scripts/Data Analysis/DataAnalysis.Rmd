@@ -1,6 +1,6 @@
 ---
-title: "Deliv.3"
-author: "Niko"
+title: "Deliverable 3"
+author: "Niko, Reina, and Braylee"
 date: "`r Sys.Date()`"
 output: html_document
 ---
