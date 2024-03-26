@@ -1,6 +1,6 @@
 ---
-title: "Deliv.3"
-author: "Niko"
+title: "Deliverable 3"
+author: "Niko, Reina, and Braylee"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -19,8 +19,6 @@ df3 <- read_csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.cs
 df4 <- read_csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
 #df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
                 
-
-
 # Step 2: Combine the data frames into one
 merged_data_all <- full_join(df1, df2) %>% 
   full_join(., df3) %>% 

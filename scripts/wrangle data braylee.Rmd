@@ -1,0 +1,70 @@
+---
+title: "Periphyton grab"
+output: html_document
+date: "2024-02-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
+#Load the here package
+
+library(tidyverse)
+library(here)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+#Read in biomass data
+alg_biomass <- read_csv(here("data", "raw", "alg_biomass.csv"))
+```
+```{r}
+subset_data <- subset(alg_biomass, select = c("adjAshFreeDryMass", "siteID", "collectDate"))
+```
+
+```{r}
+subset_data%>%
+  write_csv(here("data", "processed", "alg_biomass.csv"))
+```
+
+```{r}
+subset_data <- na.omit(subset_data) %>%
+mutate(collectDate2 = as_date(collectDate)) %>%
+select(-collectDate)
+
+```
+
+```{r}
+pacman::p_load(tidyverse, here, palmerpenguins, cowplot, viridis)
+```
+
+
+```{r}
+ggplot(data = subset_data ,
+       aes(x = adjAshFreeDryMass))  +
+  geom_histogram() 
+```
+```{r}
+ggplot(data = subset_data, 
+       mapping = aes(x = siteID,
+                     y = adjAshFreeDryMass)) + 
+  geom_boxplot() +
+  labs(x = "Site", 
+       y = "adjAshFreeDryMass (g/L") +
+  #scale_y_continuous(limits = c(20, 60),
+                     #breaks = seq(20, 60, 10)) +
+  theme_bw()
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
