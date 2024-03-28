@@ -17,12 +17,13 @@ df1 <- read_csv(here("data", "processed", "algal_biomass", "alg_biomass_means.cs
 df2 <- read_csv(here("data", "processed", "fish","final_fish_count_means.csv"))
 df3 <- read_csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.csv"))
 df4 <- read_csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
-df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
+
                 
 # Step 2: Combine the data frames into one
 merged_data_all <- full_join(df1, df2) %>% 
   full_join(., df3) %>% 
-  full_join(., df4)
+  full_join(., df4) %>%
+  full_join(., df5)
 
 # Step 3: Write the merged data frame into a new CSV file
 write.csv(merged_data_all, "merged_data.csv", row.names = FALSE)
@@ -45,8 +46,9 @@ summary(linear_model2)
 This linear model indicates that F(1,9)=4.327, p=0.06725, p>0.001) with t=-2.080. The R-squared value of 0.2496 tells us that only 24.96% of variability in adjAshFreeDryMass can be explained by fish weight (abundance). 
 ```{r}
 ggplot(data = merged_data_all,
-       aes(x = mean_weight, 
-           y = mean_adjAshFreeDryMass)) +
+       aes(x = mean_adjAshFreeDryMass, 
+           y = mean_weight)) +
+  labs (y = "Fish Biomass" , x= "Algal Biomass") +
   geom_point() +
   theme_classic() +
   geom_smooth(method = "lm")
@@ -54,20 +56,15 @@ ggplot(data = merged_data_all,
 
 ```{r}
 ggplot(data = merged_data_all,
-       aes(x = mean_adjAshFreeDryMass, 
-           y = mean_SWN)) +
+       aes(x = mean_SWN, 
+           y = mean_adjAshFreeDryMass)) +
   geom_point() +
   theme_classic() +
   geom_smooth(method = "lm")
 ```
 
-```{r}
-par(mfrow = c(1, 3))
-plot(linear_model1, which = c (1:3))
+
 ```
 
-```{r}
-par(mfrow = c(1, 3))
-plot(linear_model2, which = c (1:3))
-```
+
 
