@@ -37,12 +37,12 @@ head(merged_data_all)
 linear_model1 <- lm(mean_SWN ~ mean_adjAshFreeDryMass, data = merged_data_all)
 summary(linear_model1)
 ```
-
+This linear model indicates that F(1,6)=0.2535, p=0.6326, p>0.001) with t=0.503. The R-squared value of -0.1194 tells us that only 4.7% of variability in SWN can be explained by adjAshFreeDryMass. 
 ```{r}
 linear_model2 <- lm(mean_weight ~ mean_adjAshFreeDryMass, data = merged_data_all)
 summary(linear_model2)
 ```
-
+This linear model indicates that F(1,9)=4.327, p=0.06725, p>0.001) with t=-2.080. The R-squared value of 0.2496 tells us that only 24.96% of variability in adjAshFreeDryMass can be explained by fish weight (abundance). 
 ```{r}
 ggplot(data = merged_data_all,
        aes(x = mean_weight, 
