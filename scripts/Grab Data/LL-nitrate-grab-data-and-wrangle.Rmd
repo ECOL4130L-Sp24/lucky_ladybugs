@@ -162,8 +162,30 @@ finalnutrientdatamena <- finalnutrientdata %>%
             mean_OrthoP_Con_mgL = mean(OrthoPConcentration_mgL), 
             mean_NO3NO2_Con_mgL = mean(NO3NO2Concentration_mgL) )
 ```
+make collect date same
+```{r}
+
+```
+
+
 save data 
 ```{r}
 finalnutrientdatamena %>% 
   write_csv(here("data", "processed", "nutrient_data_means.csv"))
 ```
+
+```{r}
+nutrientall <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
+```
+
+
+```{r}
+nutrientall<- nutrientall %>% 
+  mutate(collectYear= year(collectDate), 
+         collectMonth = month(collectDate)) %>% 
+  select(-collectDate)
+
+nutrientall %>% 
+  write_csv(here("data", "processed", "nutrient_data_means.csv"))
+```
+

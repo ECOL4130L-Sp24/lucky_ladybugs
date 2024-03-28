@@ -13,17 +13,16 @@ library(tidyverse)
 need to adjust collectData for df5 and combine collect year and collect month
 ```{r}
 # Step 1: Read the CSV files into separate data frames
-df1 <- read_csv(here("data", "processed", "algal_biomass", "alg_biomass_means.csv")) 
+df1 <- read_csv(here("data", "processed", "algal_biomass", "alg_biomass_means.csv"))
 df2 <- read_csv(here("data", "processed", "fish","final_fish_count_means.csv"))
 df3 <- read_csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.csv"))
 df4 <- read_csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
-df5 <- read_csv(here("data", "processed", "nutrient_data_WQ", "nutrient_data_means.csv"))
+df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
                 
 # Step 2: Combine the data frames into one
 merged_data_all <- full_join(df1, df2) %>% 
   full_join(., df3) %>% 
-  full_join(., df4) %>%
-  full_join(., df5)
+  full_join(., df4)
 
 # Step 3: Write the merged data frame into a new CSV file
 write.csv(merged_data_all, "merged_data.csv", row.names = FALSE)
@@ -35,37 +34,48 @@ head(merged_data_all)
 
 ```{r}
 
-linear_model1 <- lm(mean_adjAshFreeDryMass ~ mean_SWN, data = merged_data_all)
+linear_model1 <- lm(mean_SWN ~ mean_adjAshFreeDryMass, data = merged_data_all)
 summary(linear_model1)
 ```
+
 A linear regression was performed to predict the relationship between nitrate concentration and algal biomass. The results of the linear regression indicated that nitrate concentration explained -11.94% of the variation in algal biomass (F(1,6)=0.2535, p=0.6326).
+
+
+
 ```{r}
 linear_model2 <- lm(mean_weight ~ mean_adjAshFreeDryMass, data = merged_data_all)
 summary(linear_model2)
 ```
+
 A linear regression was performed to predict the relationship between fish abundance and algal biomass. The results of the linear regression indicated that algal biomass explained 24.96% of the variation in fish abundance (F(1,9)=4.327, p=0.06725). 
+
+
+```{r}
+ggplot(data = merged_data_all,
+       aes(x = mean_weight, 
+           y = mean_adjAshFreeDryMass)) +
+  geom_point() +
+  theme_classic() +
+  geom_smooth(method = "lm")
+```
+Figure 1. The affect of Fish Biomass on Algal Biomass across 3 sites(CRAM, TOOK, PRLA) from 2016-2019. The trend line indicates that as Fish Biomass increases, Algal Biomass decreases with the grey section representing a 95% confidence interval to the line of best fit. (F(1,9)=4.37, p=0.0657, R^2=0.250) 
+
 ```{r}
 ggplot(data = merged_data_all,
        aes(x = mean_adjAshFreeDryMass, 
-           y = mean_weight)) +
-  labs (y = "Fish Biomass" , x= "Algal Biomass") +
+           y = mean_SWN)) +
   geom_point() +
   theme_classic() +
   geom_smooth(method = "lm")
+```
+Figure 2. The effect of Surface Water Nitrate on Algal Biomass across 3 sites (CRAM, TOOK, PRLA) from 2016-2019. The trend line indicates that as Surface Water Nitrogen levels increase, Algal Biomass decreases with many variations towards the higher  (F(1,6)=0.254, p=0.633, R^2= -0.119)
+```{r}
+par(mfrow = c(1, 3))
+plot(linear_model1, which = c (1:3))
 ```
 
 ```{r}
-ggplot(data = merged_data_all,
-       aes(x = mean_SWN, 
-           y = mean_adjAshFreeDryMass)) +
-  labs(y= "Algal Biomass" , x = "Nitrate Concentration") +
-  geom_point() +
-  theme_classic() +
-  geom_smooth(method = "lm")
+par(mfrow = c(1, 3))
+plot(linear_model2, which = c (1:3))
 ```
-
-
-```
-
-
 
