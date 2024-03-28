@@ -17,7 +17,7 @@ df1 <- read_csv(here("data", "processed", "algal_biomass", "alg_biomass_means.cs
 df2 <- read_csv(here("data", "processed", "fish","final_fish_count_means.csv"))
 df3 <- read_csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.csv"))
 df4 <- read_csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
-#df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
+df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
                 
 # Step 2: Combine the data frames into one
 merged_data_all <- full_join(df1, df2) %>% 
