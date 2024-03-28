@@ -38,12 +38,12 @@ head(merged_data_all)
 linear_model1 <- lm(mean_adjAshFreeDryMass ~ mean_SWN, data = merged_data_all)
 summary(linear_model1)
 ```
-
+The results of the linear regression indicated that mean_SWN explained -11.94% of the variation in mean_adjAshFreeDryMass (F(1,6)=0.2535, p=0.6326).
 ```{r}
 linear_model2 <- lm(mean_weight ~ mean_adjAshFreeDryMass, data = merged_data_all)
 summary(linear_model2)
 ```
-
+The results of the linear regression indicated that mean_weight explained 24.96% of the variation in adjAshFreeDryMass (F(1,9)=4.327, p=0.06725). 
 ```{r}
 ggplot(data = merged_data_all,
        aes(x = mean_adjAshFreeDryMass, 
