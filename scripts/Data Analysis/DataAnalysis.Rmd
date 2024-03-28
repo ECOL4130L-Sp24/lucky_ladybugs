@@ -54,21 +54,25 @@ A linear regression was performed to predict the relationship between fish abund
 ggplot(data = merged_data_all,
        aes(x = mean_weight, 
            y = mean_adjAshFreeDryMass)) +
+  labs(x= "Mean Fish Biomass (g)",
+       y = "Mean Algal Biomass (g)")+
   geom_point() +
   theme_classic() +
   geom_smooth(method = "lm")
 ```
-Figure 1. The affect of Fish Biomass on Algal Biomass across 3 sites(CRAM, TOOK, PRLA) from 2016-2019. The trend line indicates that as Fish Biomass increases, Algal Biomass decreases with the grey section representing a 95% confidence interval to the line of best fit. (F(1,9)=4.37, p=0.0657, R^2=0.250) 
+Figure 1. The affect of Mean Fish Biomass on Mean Algal Biomass across 3 sites(CRAM, TOOK, PRLA) from 2016-2019. The trend line indicates that as Fish Biomass increases, Algal Biomass decreases with the grey section representing a 95% confidence interval to the line of best fit. (F(1,9)=4.37, p=0.0657, R^2=0.250) 
 
 ```{r}
 ggplot(data = merged_data_all,
-       aes(x = mean_adjAshFreeDryMass, 
-           y = mean_SWN)) +
+       aes(x = mean_SWN, 
+           y = mean_adjAshFreeDryMass)) +
+  labs(x= "Surface Water Nitrate (micromoles per Liter)", 
+       y = "Mean Algal Biomass (g)")+
   geom_point() +
   theme_classic() +
   geom_smooth(method = "lm")
 ```
-Figure 2. The effect of Surface Water Nitrate on Algal Biomass across 3 sites (CRAM, TOOK, PRLA) from 2016-2019. The trend line indicates that as Surface Water Nitrogen levels increase, Algal Biomass decreases with many variations towards the higher  (F(1,6)=0.254, p=0.633, R^2= -0.119)
+Figure 2. The effect of Mean Surface Water Nitrate on Mean Algal Biomass across 3 sites (CRAM, TOOK, PRLA) from 2016-2019. The trend line indicates that as Surface Water Nitrogen levels increase, Algal Biomass increases as well with many variations in the data as Nitrate concentrations increase (95% confidence interval). the higher  (F(1,6)=0.254, p=0.633, R^2= -0.119)
 ```{r}
 par(mfrow = c(1, 3))
 plot(linear_model1, which = c (1:3))
