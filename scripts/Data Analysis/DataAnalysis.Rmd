@@ -17,7 +17,7 @@ df1 <- read_csv(here("data", "processed", "algal_biomass", "alg_biomass_means.cs
 df2 <- read_csv(here("data", "processed", "fish","final_fish_count_means.csv"))
 df3 <- read_csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.csv"))
 df4 <- read_csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
-
+df5 <- read_csv(here("data", "processed", "nutrient_data_WQ", "nutrient_data_means.csv"))
                 
 # Step 2: Combine the data frames into one
 merged_data_all <- full_join(df1, df2) %>% 
@@ -35,7 +35,7 @@ head(merged_data_all)
 
 ```{r}
 
-linear_model1 <- lm(mean_SWN ~ mean_adjAshFreeDryMass, data = merged_data_all)
+linear_model1 <- lm(mean_adjAshFreeDryMass ~ mean_SWN, data = merged_data_all)
 summary(linear_model1)
 ```
 
@@ -58,6 +58,7 @@ ggplot(data = merged_data_all,
 ggplot(data = merged_data_all,
        aes(x = mean_SWN, 
            y = mean_adjAshFreeDryMass)) +
+  labs(y= "Algal Biomass" , x = "Nitrate Concentration") +
   geom_point() +
   theme_classic() +
   geom_smooth(method = "lm")
