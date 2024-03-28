@@ -35,12 +35,12 @@ head(merged_data_all)
 ```{r}
 
 linear_model1 <- lm(mean_SWN ~ mean_adjAshFreeDryMass, data = merged_data_all)
-summary(linear_model)
+summary(linear_model1)
 ```
 
 ```{r}
 linear_model2 <- lm(mean_weight ~ mean_adjAshFreeDryMass, data = merged_data_all)
-summary(linear_model)
+summary(linear_model2)
 ```
 
 ```{r}
