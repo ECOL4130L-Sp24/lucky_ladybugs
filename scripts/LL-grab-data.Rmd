@@ -153,6 +153,6 @@ variables_20093 %>%
   write_csv(here("data", "raw", "variables_20093.csv"))
 
 swc_externalLabDataByAnalyte %>% 
-  write_csv(here("data", "raw", "nutrientdata.csv"))
+  write_csv(here("data", "raw", "swc_externalLabDataByAnalyte.csv"))
 
 ```
