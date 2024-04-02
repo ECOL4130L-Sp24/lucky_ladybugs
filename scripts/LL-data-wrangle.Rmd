@@ -1,0 +1,217 @@
+---
+title: "Consolidated raw data wrangling & summarizing"
+author: "Reina Scott, Niko Reynolds, Braylee Marston"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+load packages 
+```{r}
+library(tidyverse)
+library(here)
+```
+
+## Periphyton
+```{r}
+#Read in biomass data
+alg_biomass <- read_csv(here("data", "raw", "alg_biomass.csv"))
+```
+
+```{r}
+subset_data <- alg_biomass %>% 
+  select("siteID", "collectDate", "adjAshFreeDryMass") %>% 
+  filter(!is.na(adjAshFreeDryMass))
+
+subset_data %>%
+  write_csv(here("data", "processed", "alg_biomass.csv"))
+```
+
+```{r}
+ggplot(data = subset_data ,
+       aes(x = adjAshFreeDryMass))  +
+  geom_histogram() 
+```
+```{r}
+ggplot(data = subset_data, 
+       mapping = aes(x = siteID,
+                     y = adjAshFreeDryMass)) + 
+  geom_boxplot() +
+  labs(x = "Site", 
+       y = "adjAshFreeDryMass (g/L") +
+  theme_bw()
+
+```
+
+```{r}
+ alg_biomass_means <- subset_data %>%
+  mutate(collectDate = as_date(floor_date(collectDate, "month"))) %>% 
+  group_by(siteID, collectDate) %>% 
+  summarize(mean_adjAshFreeDryMass = mean(adjAshFreeDryMass)) %>%
+  write_csv(here("data", "processed", "alg_biomass_means.csv"))
+```
+
+## Water quality
+```{r}
+# Read in raw data
+water_qual <- read_csv(here("data", "raw", "waq_instantaneous.csv"))
+
+# Preview the data
+head(water_qual)
+```
+
+```{r}
+# Subset by variables and drop NAs
+subset_waterqual <- water_qual %>% 
+  mutate(collectDate = as_date(floor_date(endDateTime, "month"))) %>%
+  select(siteID, collectDate, pH, chlorophyll, dissolvedOxygen) %>%
+  drop_na() %>% 
+  arrange(siteID)
+
+head(subset_waterqual)
+```
+
+change data and time and organize by means 
+```{r}
+
+waterqual_means <- subset_waterqual %>% 
+  group_by(siteID, collectDate) %>% 
+  summarise(mean_pH = mean(pH), 
+            mean_DO = mean(dissolvedOxygen), 
+            mean_chlorophyll= mean(chlorophyll))
+
+head(waterqual_means)
+
+```
+
+```{r}
+waterqual_means %>%
+  write_csv(here("data", "processed", "waterqual_means.csv"))
+```
+
+## Fish
+import raw data 
+```{r}
+fish_abiotic_raw <- read_csv(here("data", "raw", "fsh_perPass.csv"))
+
+fish_count_raw <- read_csv(here("data", "raw", "fsh_perFish.csv"))
+
+```
+
+selecting important columns for abiotic data
+```{r}
+fish_data_abiotic <- fish_abiotic_raw %>% 
+  mutate(collectDate = as_date(floor_date(passStartTime, "month"))) %>%
+  select(siteID, collectDate, waterTemp, dissolvedOxygen) %>% 
+  filter(!is.na(waterTemp)) %>% 
+  filter(!is.na(dissolvedOxygen))
+```
+
+mean of data by column for abioic data 
+```{r}
+fish_data_abiotic_means <- fish_data_abiotic %>% 
+  group_by(siteID, collectDate) %>% 
+  summarise(mean_temp = mean(waterTemp), 
+            mean_DO = mean(dissolvedOxygen))
+
+```
+import data for fish count
+```{r}
+fish_count_data <- fish_count_raw %>%
+  mutate(collectDate = as_date(floor_date(passStartTime, "month"))) %>%
+  select(siteID, collectDate, taxonID, scientificName, fishTotalLength, fishWeight, fishLifeStage) %>%
+  filter(!is.na(taxonID), 
+         !is.na(fishTotalLength), 
+         !is.na(fishWeight), 
+         !is.na(fishLifeStage))
+  
+```
+
+group site ID and date together and collect means 
+```{r}
+fish_count_data_means <- fish_count_data %>%
+  group_by(siteID, collectDate) %>%
+  summarize(mean_weight = mean(fishWeight), 
+            mean_length = mean(fishTotalLength),
+            total_weight = sum(fishWeight),
+            total_individuals = n())
+  
+```
+save data to processed 
+```{r}
+fish_count_data %>% 
+  write_csv(here("data", "processed", "final_fish_count_gen.csv"))
+
+fish_count_data_means %>% 
+  write_csv(here("data", "processed", "final_fish_count_means.csv"))
+
+```
+
+## Nitrate
+Read in raw data 
+```{r}
+SW_Nitrate <- read_csv(here("data", "raw", "NSW_15_minute.csv"))
+```
+
+group by year and month and get means of years 
+```{r}
+SW_Nitrate_means <- SW_Nitrate %>% 
+  mutate(collectDate = as_date(floor_date(endDateTime, "month"))) %>% 
+  select(siteID, collectDate, surfWaterNitrateMean) %>% 
+  filter(surfWaterNitrateMean > 0) %>% 
+  group_by(siteID, collectDate) %>% 
+  summarise(mean_SWN = mean(surfWaterNitrateMean)) 
+
+```
+
+save summarized data 
+```{r}
+SW_Nitrate_means %>% 
+  write_csv(here("data", "processed", "SW_Nitrate_means.csv"))
+```
+
+## Surface water nutrients
+import raw data
+```{r}
+nutrientdata <- read_csv(here("data", "raw",
+                             "swc_externalLabDataByAnalyte.csv"))
+```
+
+wrangle data 
+```{r}
+nutrientdata_noNAs <- nutrientdata %>% 
+  mutate(collectDate = as_date(floor_date(collectDate, "month"))) %>%
+  filter(analyte %in% c("TN", "TP", "Ortho - P", "NH4 - N", "NO3+NO2 - N"),
+         !is.na(analyteConcentration)) %>%
+  unite("analyte_units", 
+        c("analyte", "analyteUnits"), 
+        sep = "_") %>% 
+  select(siteID, collectDate, analyte_units, analyteConcentration) 
+```
+
+Calculate mean per site, collectDate, analyte
+```{r}
+mean_nutrients <- nutrientdata_noNAs %>% 
+  group_by(siteID, collectDate, analyte_units) %>%
+  summarize(mean_conc = mean(analyteConcentration))
+```
+
+Pivot mean nutrient data wider
+```{r}
+nutrientdata_wide <- mean_nutrients %>% 
+  pivot_wider(names_from = analyte_units, 
+              values_from = mean_conc) %>% 
+  rename("NH4_mgL" = "NH4 - N_milligramsPerLiter",
+         "NIT_mgL" = "NO3+NO2 - N_milligramsPerLiter",
+         "TN_mgL" = "TN_milligramsPerLiter",
+         "SRP_mgL" = "Ortho - P_milligramsPerLiter",
+         "TP_mgL" = "TP_milligramsPerLiter") %>% 
+  select(-TN_NA)
+
+head(nutrientdata_wide)
+```
+
+save data 
+```{r}
+nutrientdata_wide %>% 
+  write_csv(here("data", "processed", "nutrient_data_means.csv"))
+```
