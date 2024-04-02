@@ -1,0 +1,158 @@
+---
+title: "Consolidated NEON Data Grab"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+```{r}
+library(tidyverse)
+library(neonUtilities)
+library(here)
+```
+
+specify target data
+```{r}
+# periphyton data
+periphyton <- "DP1.20166.001"
+
+# water quality 
+water_quality <- "DP1.20288.001"
+
+# fish electro fishing 
+fish_count <- "DP1.20107.001"
+
+# "Nitrate in surface water"
+nitrate <- "DP1.20033.001"
+
+# "Chemical properties of surface water" (nutrients)
+nutrient <- "DP1.20093.001"
+
+# Focal sites
+my_sites <- c("TOOK", "CRAM", "PRLA")
+
+# Start date (as YYYY-MM)
+start_date <- NA #"2016-03"
+
+# End date (as YYYY-MM)
+end_date <- NA #"2021-12"
+```
+
+## Periphyton
+download data
+```{r}
+list2env((loadByProduct(dpID = periphyton, 
+                        site = my_sites, 
+                        include.provisional = TRUE,
+                        startdate = start_date,
+                        enddate = end_date)),
+         .GlobalEnv)
+```
+
+```{r}
+#save files to data folder! 
+variables_20166 %>% 
+  write_csv(here("data", "raw", "variables_20166.csv"))
+
+alg_biomass %>% 
+  write_csv(here("data", "raw", "alg_biomass.csv"))
+
+```
+
+## Water Quality
+download data
+```{r}
+# 
+list2env((loadByProduct(dpID = water_quality, 
+                        site = my_sites, 
+                        include.provisional = TRUE,
+                        startdate = start_date,
+                        enddate = end_date)),
+         .GlobalEnv)
+```
+
+```{r}
+#save files to data folder! 
+variables_20288 %>% 
+  write_csv(here("data", "raw", "variables_20288.csv"))
+
+waq_instantaneous %>% 
+  write_csv(here("data", "raw", "waq_instantaneous.csv"))
+
+```
+## Fish
+download data
+```{r}
+list2env((loadByProduct(dpID = fish_count, 
+                        site = my_sites, 
+                        include.provisional = TRUE,
+                        startdate = start_date,
+                        enddate = end_date)),
+         .GlobalEnv)
+```
+
+```{r}
+#save files to data folder! 
+variables_20107 %>% 
+  write_csv(here("data", "raw", "variables_20107.csv"))
+```
+
+download data for possible water quality measurments (watertemp)(dissolvedOxygen)
+```{r}
+# fsh_perPass
+fsh_perPass %>% 
+  write_csv(here("data", "raw", "fsh_perPass.csv"))
+```
+
+download data about fish: important names (fishWeight) (morphospeciesIDRemarks)
+```{r}
+# fsh_perFish
+fsh_perFish %>% 
+  write_csv(here("data", "raw", "fsh_perFish.csv"))
+```
+## Nitrate
+pull data from neon 
+```{r}
+list2env((loadByProduct(dpID = nitrate, 
+                        site = my_sites, 
+                        include.provisional = TRUE,
+                        startdate = start_date,
+                        enddate = end_date)),
+         .GlobalEnv)
+```
+
+save data to raw data folder 
+```{r}
+variables_20033 %>% 
+  write_csv(here("data", "raw", "variables_20033.csv"))
+
+NSW_15_minute %>% 
+  write_csv(here("data", "raw", "NSW_15_minute.csv"))
+
+```
+
+## Nutrients
+pull data from neon 
+```{r}
+list2env((loadByProduct(dpID = nutrient, 
+                        site = my_sites, 
+                        include.provisional = TRUE,
+                        startdate = start_date,
+                        enddate = end_date)),
+         .GlobalEnv)
+```
+
+save data to raw data folder 
+```{r}
+variables_20093 %>% 
+  write_csv(here("data", "raw", "variables_20093.csv"))
+
+swc_externalLabDataByAnalyte %>% 
+  write_csv(here("data", "raw", "nutrientdata.csv"))
+
+```
