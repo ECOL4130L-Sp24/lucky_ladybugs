@@ -1,0 +1,81 @@
+---
+title: "wrangle_nitrate_data"
+author: "Reina Scott"
+date: "2024-03-19"
+output: html_document
+---
+
+load packages 
+```{r}
+library(tidyverse)
+library(here)
+```
+
+## Nitrate
+Read in raw data 
+```{r}
+SW_Nitrate <- read_csv(here("data", "raw", "NSW_15_minute.csv"))
+```
+group by year and month and get means of years 
+```{r}
+SW_Nitrate_means <- SW_Nitrate %>% 
+  select(siteID, surfWaterNitrateMean, startDateTime, endDateTime) %>% 
+  filter(surfWaterNitrateMean > 0) %>% 
+  mutate(collectDate = as_date(floor_date(endDateTime, "month"))) %>% 
+  group_by(siteID, collectDate) %>% 
+  summarise(mean_SWN = mean(surfWaterNitrateMean)) 
+
+```
+
+save summarized data 
+```{r}
+SW_Nitrate_means %>% 
+  write_csv(here("data", "processed", "SW_Nitrate_means.csv"))
+```
+
+## Surface water nutrients
+import raw data
+```{r}
+nutrientdata <- read_csv(here("data", "raw",
+                             "swc_externalLabDataByAnalyte.csv"))
+```
+
+wrangle data 
+```{r}
+nutrientdata_noNAs <- nutrientdata %>% 
+  filter(analyte %in% c("TN", "TP", "Ortho - P", "NH4 - N", "NO3+NO2 - N")) %>%
+  filter(!is.na(analyteConcentration)) %>% 
+  unite("analyte_units", 
+        c("analyte", "analyteUnits"), 
+        sep = "_") %>% 
+  select(siteID, analyte_units, analyteConcentration, collectDate) 
+```
+
+Calculate mean per site, collectDate, analyte
+```{r}
+mean_nutrients <- nutrientdata_noNAs %>% 
+  mutate(collectDate = as_date(floor_date(collectDate, "month"))) %>%
+  group_by(siteID, collectDate, analyte_units) %>%
+  summarize(mean_conc = mean(analyteConcentration))
+```
+
+Pivot mean nutrient data wider
+```{r}
+nutrientdata_wide <- mean_nutrients %>% 
+  pivot_wider(names_from = analyte_units, 
+              values_from = mean_conc) %>% 
+  rename("NH4_mgL" = "NH4 - N_milligramsPerLiter",
+         "NIT_mgL" = "NO3+NO2 - N_milligramsPerLiter",
+         "TN_mgL" = "TN_milligramsPerLiter",
+         "SRP_mgL" = "Ortho - P_milligramsPerLiter",
+         "TP_mgL" = "TP_milligramsPerLiter") %>% 
+  select(-TN_NA)
+
+head(nutrientdata_wide)
+```
+
+save data 
+```{r}
+nutrientdata_wide %>% 
+  write_csv(here("data", "processed", "nutrient_data_means.csv"))
+```
