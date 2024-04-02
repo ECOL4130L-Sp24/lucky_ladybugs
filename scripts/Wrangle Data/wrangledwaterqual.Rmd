@@ -9,12 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
 ```{r}
 # Load the tidyverse package
 # Load the here package
@@ -24,51 +18,40 @@ library(tidyverse)
 
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
 
 ```{r}
-# Read in Titanic data
+# Read in raw data
 water_qual <- read_csv(here("data", "raw", "waq_instantaneous.csv"))
 
 # Preview the data
 head(water_qual)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
 ```{r}
-# Subset by variables
-subset_waterqual2 <- water_qual %>%
-  select(siteID, pH, chlorophyll, dissolvedOxygen, endDateTime) %>%
+# Subset by variables and drop NAs
+subset_waterqual <- water_qual %>% 
+  mutate(collectDate = as_date(floor_date(endDateTime, "month"))) %>%
+  select(siteID, collectDate, pH, chlorophyll, dissolvedOxygen) %>%
+  drop_na() %>% 
   arrange(siteID)
-print(subset_waterqual2)
+
+head(subset_waterqual)
 ```
 
-```{r}
-# Store "no NA" subset as a new object
-
-waterqual2_no_NAs <- drop_na(subset_waterqual2)
-
-head(waterqual2_no_NAs)
-```
 change data and time and organize by means 
 ```{r}
 
-waterqual_means<- waterqual2_no_NAs %>% 
-  mutate(collectDate = as_date(endDateTime)) %>% 
-  mutate(collectMonth = month(endDateTime), collectYear = year(endDateTime)) %>% 
- group_by(siteID, collectYear, collectMonth) %>% 
+waterqual_means <- subset_waterqual %>% 
+  group_by(siteID, collectDate) %>% 
   summarise(mean_pH = mean(pH), 
-            mean_DO = mean(dissolvedOxygen), mean_chlorophyll= mean(chlorophyll))
+            mean_DO = mean(dissolvedOxygen), 
+            mean_chlorophyll= mean(chlorophyll))
 
+head(waterqual_means)
 
 ```
-
 
 ```{r}
 waterqual_means %>%
   write_csv(here("data", "processed", "waterqual_means.csv"))
 ```
-
