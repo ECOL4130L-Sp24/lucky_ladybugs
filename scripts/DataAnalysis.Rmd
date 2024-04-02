@@ -7,31 +7,37 @@ output: html_document
 ```{r}
 library(here)
 library(tidyverse)
-
 ```
 
-need to adjust collectData for df5 and combine collect year and collect month
+[KF has now done this!] need to adjust collectData for df5 and combine collect year and collect month
 ```{r}
 # Step 1: Read the CSV files into separate data frames
-df1 <- read_csv(here("data", "processed", "algal_biomass", "alg_biomass_means.csv"))
-df2 <- read_csv(here("data", "processed", "fish","final_fish_count_means.csv"))
-df3 <- read_csv(here("data", "processed", "nutrient_data_WQ","waterqual_means.csv"))
-df4 <- read_csv(here("data", "processed", "nutrient_data_WQ","SW_Nitrate_means.csv"))
-df5 <- read.csv(here("data", "processed", "nutrient_data_WQ","nutrient_data_means.csv"))
-                
+df1 <- read_csv(here("data", "processed", "alg_biomass_means.csv"))
+df2 <- read_csv(here("data", "processed", "final_fish_count_means.csv"))
+df3 <- read_csv(here("data", "processed", "waterqual_means.csv"))
+df4 <- read_csv(here("data", "processed", "SW_Nitrate_means.csv"))
+df5 <- read_csv(here("data", "processed", "nutrient_data_means.csv"))
+```
+
+```{r}
 # Step 2: Combine the data frames into one
 merged_data_all <- full_join(df1, df2) %>% 
   full_join(., df3) %>% 
-  full_join(., df4)
-
-# Step 3: Write the merged data frame into a new CSV file
-write.csv(merged_data_all, "merged_data.csv", row.names = FALSE)
+  full_join(., df4) %>% 
+  full_join(., df5)
 
 # Check the first few rows of the merged data frame
 head(merged_data_all)
+
+# Step 3: Write the merged data frame into a new CSV file
+write_csv(merged_data_all, here("data", "processed", "merged_data.csv"))
+
 ```
 
 
+**KF: Unclear why you set the model up this way (with mean ash free dry mass as the predictor variable and surface water nitrate concentrations as the response)... I think you want to reverse your variables!**
+
+**Also be sure to include plots/tests that check that data are meeting the assumptions of linear models!**
 ```{r}
 
 linear_model1 <- lm(mean_SWN ~ mean_adjAshFreeDryMass, data = merged_data_all)
@@ -49,7 +55,7 @@ summary(linear_model2)
 
 A linear regression was performed to predict the relationship between fish abundance and algal biomass. The results of the linear regression indicated that algal biomass explained 24.96% of the variation in fish abundance (F(1,9)=4.327, p=0.06725, R^2=0.2202). 
 
-
+**KF: Here and below, check that the predictor variables in the regression are the same variables you're putting on your x-axes!**
 ```{r}
 ggplot(data = merged_data_all,
        aes(x = mean_weight, 
