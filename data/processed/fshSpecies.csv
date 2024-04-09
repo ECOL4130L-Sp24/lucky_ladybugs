@@ -1,0 +1,17 @@
+siteID,scientificName,count,mean_weight
+CRAM,Chrosomus neogaeus,1,5
+CRAM,Etheostoma exile,13,0.8
+CRAM,Etheostoma nigrum,9,0.93
+CRAM,Lepomis gibbosus,49,21.38
+CRAM,Lepomis macrochirus,2455,7.92
+CRAM,Micropterus salmoides,180,77.01
+CRAM,Notemigonus crysoleucas,126,12.81
+CRAM,Perca flavescens,582,7.98
+CRAM,Umbra limi,244,1.81
+PRLA,Culaea inconstans,511,2.25
+PRLA,Pimephales promelas,4560,1.79
+TOOK,Cottus cognatus,270,1.99
+TOOK,Lota lota,75,217.05
+TOOK,Prosopium cylindraceum,31,377.57
+TOOK,Salvelinus namaycush,33,681.44
+TOOK,Thymallus arcticus,402,37.72
