@@ -165,3 +165,55 @@ ggplot(data = merged_data_all,
  # geom_smooth(method = "lm") 
 ```
 
+```{r}
+linear_model1 <- lm(mean_adjAshFreeDryMass ~ total_individuals, data = merged_data_all)
+summary(linear_model1)
+```
+
+```{r}
+ggplot(data = merged_data_all,
+       aes(x = total_individuals, 
+           y = mean_adjAshFreeDryMass)) +
+  labs(x= "Total Fish Abundance ",
+       y = "Mean Algal Biomass (g)")+
+  geom_point() +
+  theme_classic() +
+  geom_smooth(method = "lm")
+```
+
+```{r}
+linear_model1 <- lm(NH4_mgL ~ mean_adjAshFreeDryMass, data = merged_data_all)
+summary(linear_model1)
+```
+
+```{r}
+ggplot(data = merged_data_all,
+       aes(x = NH4_mgL, 
+           y = mean_adjAshFreeDryMass)) +
+  labs(x= "Ammonium Concentration (mg/L) ",
+       y = "Mean Algal Biomass (g)")+
+  geom_point() +
+  xlim(0,0.5) +
+  ylim(0,0.005)+
+  theme_classic() +
+  geom_smooth(method = "lm")
+```
+
+```{r}
+linear_model1 <- lm(mean_adjAshFreeDryMass ~ SRP_mgL, data = merged_data_all)
+summary(linear_model1)
+```
+
+```{r}
+ggplot(data = merged_data_all,
+       aes(x = SRP_mgL, 
+           y = mean_adjAshFreeDryMass)) +
+  labs(x= "Soluble Reactive Phosphorous (mg/L) ",
+       y = "Mean Algal Biomass (g)")+
+  geom_point() +
+  xlim(0,0.5) +
+  ylim(0,0.005)+
+  theme_classic() +
+  geom_smooth(method = "lm")
+```
+
