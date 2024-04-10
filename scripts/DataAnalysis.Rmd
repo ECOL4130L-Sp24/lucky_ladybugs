@@ -149,7 +149,7 @@ ggplot(data = merged_data_all,
 ```
 
 ```{r}
-linear_model1 <- lm(NH4_mgL ~ mean_adjAshFreeDryMass, data = merged_data_all)
+linear_model1 <- lm(mean_adjAshFreeDryMass ~ NH4_mgL, data = merged_data_all)
 summary(linear_model1)
 ```
 
