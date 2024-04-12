@@ -215,3 +215,20 @@ save data
 nutrientdata_wide %>% 
   write_csv(here("data", "processed", "nutrient_data_means.csv"))
 ```
+
+#Wrangle data for fish by species (insectivourou/algaevorious)
+```{r}
+taxonfish<- read_csv(here("data", "raw", "fsh_perFish.csv"))
+```
+```{r}
+taxonfish1 <- taxonfish %>% 
+  group_by(siteID, scientificName) %>% 
+  summarize(count = n(), 
+            mean_weight = mean(fishWeight, na.rm = TRUE),
+            mean_weight = round(mean_weight, 2))
+
+
+taxonfish1 %>% 
+  write_csv(here("data", "processed", "fshSpecies.csv"))
+```
+
