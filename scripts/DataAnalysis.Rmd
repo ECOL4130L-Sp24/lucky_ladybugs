@@ -162,8 +162,8 @@ ggplot(data = merged_data_all,
   geom_point(aes(col= siteID)) +
   xlim(0,0.5) +
   ylim(0,0.005)+
-  theme_classic() +
-  geom_smooth(method = "lm", col = "black")
+  theme_classic() 
+  
 ```
 
 ```{r}
